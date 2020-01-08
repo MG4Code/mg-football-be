@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.ws.rs.WebApplicationException;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PlayerService {
@@ -52,5 +53,11 @@ public class PlayerService {
     Query q = new Query().addCriteria(Criteria.where("club").regex(query));
     return mongoOps.find(q, Player.class);
   }
-}
 
+  public Optional<Player> findPlayerById(String id) {
+    Player p = repo.findById(id)
+      .orElseThrow(() -> new WebApplicationException("No player found with id '" + id + "'", 404));
+
+    return repo.findById(id);
+  };
+}
