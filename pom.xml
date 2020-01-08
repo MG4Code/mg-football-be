@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.mg</groupId>
-	<artifactId>mg-backend-spring</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>backend</name>
+	<artifactId>mg-football-be</artifactId>
+	<version>0.0.1</version>
+	<name>football-be</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -57,7 +57,7 @@
 		<repository>
 		  <id>github</id>
 		  <name>GitHub Apache Maven Packages</name>
-		  <url>https://maven.pkg.github.com/basalt79/mg-backend-spring</url>
+		  <url>https://maven.pkg.github.com/imilad/mg-football-be</url>
 		</repository>
 	  </distributionManagement>
 
