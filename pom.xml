@@ -9,10 +9,18 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.mg</groupId>
-	<artifactId>mg-football-be</artifactId>
+	<artifactId>football-be</artifactId>
 	<version>0.0.1</version>
-	<name>football-be</name>
+	<name>${project.artifactId}</name>
 	<description>Demo project for Spring Boot</description>
+  
+  <distributionManagement>
+    <repository>
+      <id>github</id>
+      <name>GitHub Apache Maven Packages</name>
+      <url>https://maven.pkg.github.com/iMilad/mg-football-be</url>
+    </repository>
+  </distributionManagement>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -53,12 +61,5 @@
 			</plugin>
 		</plugins>
 	</build>
-	<distributionManagement>
-		<repository>
-		  <id>github</id>
-		  <name>GitHub Apache Maven Packages</name>
-		  <url>https://maven.pkg.github.com/imilad/mg-football-be</url>
-		</repository>
-	  </distributionManagement>
 
 </project>
