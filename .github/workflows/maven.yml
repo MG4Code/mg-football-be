@@ -20,7 +20,7 @@ jobs:
       run: mvn -B test -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
     - name: Deploy to Github Package Registry
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        MAVEN_TOKEN: ${{ secrets.TOKEN }}
       run: |
-        echo "<settings><servers><server><id>github</id><username>iMilad</username><password>${{ secrets.TOKEN }}</password></server></servers></settings>" > ~/.m2/settings.xml
+        echo "<settings><servers><server><id>github</id><username>iMilad</username><password>${MAVEN_TOKEN}</password></server></servers></settings>" > ~/.m2/settings.xml
         mvn -B deploy -DskipTests -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
