@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: football-be
+  data:
+    mongodb:
+      database: football
+      host: localhost
+      port: 27017
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 321216843150-7edcaa94kcu0bu9iktgf33un3au193vn.apps.googleusercontent.com
+            client-secret: 1W1PCFsKkAhyw9rfUhOPV8PF
