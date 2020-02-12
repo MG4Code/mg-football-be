@@ -1,14 +1,14 @@
 package com.mg.backend.player;
 
+import io.reactivex.Completable;
+import io.reactivex.Flowable;
+import io.reactivex.Maybe;
+import io.reactivex.Single;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.ws.rs.WebApplicationException;
-import java.util.List;
-import java.util.Optional;
 
 @Service
 public class PlayerService {
@@ -16,48 +16,46 @@ public class PlayerService {
   @Autowired
   private PlayerRepository repo;
 
-  @Autowired
-  private MongoTemplate mongoOps;
-
-
-  public List<Player> list() {
-    return repo.findAll();
+  public Flowable<Player> list() {
+    return repo.findAll(Sort.by("shirtNumber"));
   }
 
-  public List<Player> add(Player player) {
-    repo.insert(player);
-    return list();
+  public Single<Player> add(Player player) {
+    return repo.save(player);
   }
 
-  public Player put(String id, Player player) {
-    // I like the optional handling
-    Player byId = repo.findById(id)
-      .orElseThrow(() -> new WebApplicationException("No player found with id '" + id + "'", 404));
-
-    // TODO i hate it
-    byId.setFirstName(player.getFirstName());
-    byId.setLastName(player.getLastName());
-    byId.setClub(player.getClub());
-    byId.setPosition(player.getPosition());
-    byId.setShirtNumber(player.getShirtNumber());
-    return repo.save(byId);
+  public Single<Player> put(String id, Player player) {
+    return repo.findById(id)
+      .switchIfEmpty(Single.error(new WebApplicationException("No player found with id '" + id + "'", 404)))
+      .map(byId -> {
+        if (player.getFirstName() != null) {
+          byId.setFirstName(player.getFirstName());
+        }
+        if (player.getLastName() != null) {
+          byId.setLastName(player.getLastName());
+        }
+        if (player.getClub() != null) {
+          byId.setClub(player.getClub());
+        }
+        if (player.getPosition() != null) {
+          byId.setPosition(player.getPosition());
+        }
+        if (player.getShirtNumber() != null) {
+          byId.setShirtNumber(player.getShirtNumber());
+        }
+        return byId;
+      }).flatMap(e -> repo.save(e));
   }
 
-  public void delete(String id) {
-    Player p = repo.findById(id)
-      .orElseThrow(() -> new WebApplicationException("No player found with id '" + id + "'", 404));
-    repo.delete(p);
+  public Completable delete(String id) {
+    return repo.deleteById(id);
   }
 
-  public List<Player> findAllForClub(String query) {
-    Query q = new Query().addCriteria(Criteria.where("club").regex(query));
-    return mongoOps.find(q, Player.class);
+  public Flowable<Player> findAllForClub(String query) {
+    return repo.findByClub(query);
   }
 
-  public Optional<Player> findPlayerById(String id) {
-    Player p = repo.findById(id)
-      .orElseThrow(() -> new WebApplicationException("No player found with id '" + id + "'", 404));
-
+  public Maybe<Player> findPlayerById(String id) {
     return repo.findById(id);
-  };
+  }
 }

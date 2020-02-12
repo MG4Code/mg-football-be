@@ -7,7 +7,7 @@ public class Player {
   private String firstName;
   private String lastName;
   private String club;
-  private int shirtNumber;
+  private Integer shirtNumber;
   private Position position;
 
   public Player() {
@@ -50,11 +50,11 @@ public class Player {
     return this;
   }
 
-  public int getShirtNumber() {
+  public Integer getShirtNumber() {
     return shirtNumber;
   }
 
-  public Player setShirtNumber(int shirtNumber) {
+  public Player setShirtNumber(Integer shirtNumber) {
     this.shirtNumber = shirtNumber;
     return this;
   }
