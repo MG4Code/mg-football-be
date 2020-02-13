@@ -10,7 +10,7 @@
   </parent>
   <groupId>com.mg</groupId>
   <artifactId>football-be</artifactId>
-  <version>0.0.3</version>
+  <version>0.0.3-${maven.build.timestamp}</version>
   <name>${project.artifactId}</name>
   <description>Player database based on String Boot and reactive java</description>
 
