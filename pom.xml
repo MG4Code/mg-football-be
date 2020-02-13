@@ -10,7 +10,7 @@
   </parent>
   <groupId>com.mg</groupId>
   <artifactId>football-be</artifactId>
-  <version>0.0.3-${maven.build.timestamp}</version>
+  <version>0.0.3-SNAPSHOT-${maven.build.timestamp}</version>
   <name>${project.artifactId}</name>
   <description>Player database based on String Boot and reactive java</description>
 
@@ -23,6 +23,8 @@
   </distributionManagement>
 
   <properties>
+    <maven.build.timestamp.format>yyMMddHHmmss</maven.build.timestamp.format>
+    
     <java.version>1.8</java.version>
     <springdoc-openapi-ui.version>1.2.30</springdoc-openapi-ui.version>
 
