@@ -4,6 +4,7 @@ import io.reactivex.Completable;
 import io.reactivex.Flowable;
 import io.reactivex.Maybe;
 import io.reactivex.Single;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
@@ -11,7 +12,7 @@ import javax.inject.Inject;
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/player")
-public class PlayerResource {
+public class PlayerController {
 
   @Inject
   PlayerService service;

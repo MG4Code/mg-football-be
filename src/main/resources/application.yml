@@ -1,16 +1,15 @@
 spring:
+  banner:
+    location: banner.txt
   application:
     name: football-be
-
   thymeleaf:
     cache: false
-
   data:
     mongodb:
       database: football
       host: localhost
       port: 27017
-
   security:
     oauth2:
       client:
