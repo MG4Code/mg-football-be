@@ -12,8 +12,12 @@ import java.util.List;
 
 public class CustomPlayerRepositoryImpl implements CustomPlayerRepository {
 
+  private final MongoTemplate mongoTemplate;
+
   @Autowired
-  private MongoTemplate mongoTemplate;
+  public CustomPlayerRepositoryImpl(MongoTemplate mongoTemplate) {
+    this.mongoTemplate = mongoTemplate;
+  }
 
   @Override
   public Maybe<Player> getFirstGoalKeeper() {

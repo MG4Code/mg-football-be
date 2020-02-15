@@ -15,8 +15,12 @@ import javax.ws.rs.WebApplicationException;
 @Service
 public class PlayerService {
 
+  private final PlayerRepository repo;
+
   @Autowired
-  private PlayerRepository repo;
+  public PlayerService(PlayerRepository repo) {
+    this.repo = repo;
+  }
 
   public Flowable<Player> list() {
     return repo.findAll(Sort.by("shirtNumber"));
