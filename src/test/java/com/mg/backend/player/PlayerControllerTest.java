@@ -18,10 +18,14 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.asyncDispatch;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -49,14 +53,20 @@ public class PlayerControllerTest {
   @WithMockUser(username = "georg", roles = {"BAR"})
   public void listAllWillReturnOnePlayer() throws Exception {
     when(playerRepository.findAll()).thenReturn(Flowable.just(new Player().setFirstName("foobar")));
-    MvcResult mvcResult = mvc.perform(get("/player"))
+    var mvcResult = mvc.perform(get("/player"))
       .andExpect(request().asyncStarted())
 //      .andDo(MockMvcResultHandlers.log())
       .andReturn();
+
     mvc.perform(asyncDispatch(mvcResult))
       .andExpect(status().isOk())
       .andExpect(content().contentTypeCompatibleWith("application/json"))
-      .andExpect(content().json("[{\"firstName\":\"foobar\"}]", true));
+      .andExpect(jsonPath("$").isArray())
+      .andExpect(jsonPath("$", hasSize(1)))
+      .andExpect(jsonPath("$[0].firstName", is("foobar")))
+
+    ;
+
   }
 
   @Test
