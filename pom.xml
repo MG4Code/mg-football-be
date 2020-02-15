@@ -10,7 +10,7 @@
   </parent>
   <groupId>com.mg</groupId>
   <artifactId>football-be</artifactId>
-  <version>0.0.3-SNAPSHOT-${maven.build.timestamp}</version>
+  <version>0.0.3-SNAPSHOT</version>
   <name>${project.artifactId}</name>
   <description>Player database based on String Boot and reactive java</description>
 
@@ -144,6 +144,7 @@
 
 
   <build>
+    <finalName>${project.version}-${maven.build.timestamp}</finalName>
     <plugins>
       <plugin>
         <groupId>org.springframework.boot</groupId>
