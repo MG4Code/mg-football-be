@@ -1,6 +1,15 @@
 ![](https://github.com/basalt79/mg-backend-spring/workflows/MG%20Build%20Workflow/badge.svg)
 
-# Sample backend application with spring boot and rxjava2
+# Sample backend application
+
+## Features
+
+### Swagger
+tbd
+### Logging
+tbd
+### Oauth2
+tbd
 
 ## API
 
