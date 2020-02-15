@@ -5,8 +5,6 @@ import io.reactivex.Completable;
 import io.reactivex.Flowable;
 import io.reactivex.Maybe;
 import io.reactivex.Single;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,7 +22,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/player")
 public class PlayerController {
 
-  private Logger logger = LoggerFactory.getLogger(PlayerController.class);
   private final PlayerService service;
 
   @Autowired
@@ -34,7 +31,6 @@ public class PlayerController {
 
   @GetMapping
   public Flowable<Player> list() {
-    logger.error("list players");
     return service.list();
   }
 

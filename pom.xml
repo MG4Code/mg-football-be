@@ -58,11 +58,6 @@
       </exclusions>
     </dependency>
 
-
-
-
-
-
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-jersey</artifactId>
@@ -82,10 +77,12 @@
     </dependency>
 
     <!-- LOGGING -->
+    <!-- using log4j underneath slf4j -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-log4j2</artifactId>
     </dependency>
+    <!-- disruptor used for async logging -->
     <dependency>
       <groupId>com.lmax</groupId>
       <artifactId>disruptor</artifactId>
@@ -120,7 +117,6 @@
     </dependency>
 
     <!-- TEST -->
-
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-test</artifactId>
@@ -131,11 +127,12 @@
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
-<!--    <dependency>-->
-<!--      <groupId>de.flapdoodle.embed</groupId>-->
-<!--      <artifactId>de.flapdoodle.embed.mongo</artifactId>-->
-<!--      <scope>test</scope>-->
-<!--    </dependency>-->
+    <!-- not used, just there to connect to on startup -->
+    <dependency>
+      <groupId>de.flapdoodle.embed</groupId>
+      <artifactId>de.flapdoodle.embed.mongo</artifactId>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
 </project>

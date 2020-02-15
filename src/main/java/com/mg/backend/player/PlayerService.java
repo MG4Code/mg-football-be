@@ -1,13 +1,15 @@
 package com.mg.backend.player;
 
+import com.mg.backend.SecurityConfig;
 import com.mg.backend.player.data.dto.Player;
 import com.mg.backend.player.data.repo.PlayerRepository;
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
 import io.reactivex.Maybe;
 import io.reactivex.Single;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.ws.rs.WebApplicationException;
@@ -15,6 +17,7 @@ import javax.ws.rs.WebApplicationException;
 @Service
 public class PlayerService {
 
+  private Logger logger = LoggerFactory.getLogger(SecurityConfig.class);
   private final PlayerRepository repo;
 
   @Autowired
@@ -23,7 +26,8 @@ public class PlayerService {
   }
 
   public Flowable<Player> list() {
-    return repo.findAll(Sort.by("shirtNumber"));
+    return repo.findAll()
+      .doOnNext(e -> logger.info(e.toString()));
   }
 
   public Single<Player> add(Player player) {
@@ -50,7 +54,7 @@ public class PlayerService {
           byId.setShirtNumber(player.getShirtNumber());
         }
         return byId;
-      }).flatMap(e -> repo.save(e));
+      }).flatMap(repo::save);
   }
 
   public Completable delete(String id) {

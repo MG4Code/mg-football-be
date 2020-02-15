@@ -1,9 +1,11 @@
 package com.mg.backend.player.data.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "player")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Player {
 
   @Id
@@ -70,5 +72,17 @@ public class Player {
   public Player setPosition(Position position) {
     this.position = position;
     return this;
+  }
+
+  @Override
+  public String toString() {
+    return "Player{" +
+      "id='" + id + '\'' +
+      ", firstName='" + firstName + '\'' +
+      ", lastName='" + lastName + '\'' +
+      ", club='" + club + '\'' +
+      ", shirtNumber=" + shirtNumber +
+      ", position=" + position +
+      '}';
   }
 }
