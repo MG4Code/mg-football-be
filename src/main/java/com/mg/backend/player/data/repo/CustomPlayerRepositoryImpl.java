@@ -8,8 +8,6 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 
-import java.util.List;
-
 public class CustomPlayerRepositoryImpl implements CustomPlayerRepository {
 
   private final MongoTemplate mongoTemplate;
@@ -21,8 +19,8 @@ public class CustomPlayerRepositoryImpl implements CustomPlayerRepository {
 
   @Override
   public Maybe<Player> getFirstGoalKeeper() {
-    Query query = new Query(Criteria.where("position").is(Position.GOAL_KEEPER));
-    List<Player> players = mongoTemplate.find(query, Player.class);
+    var query = new Query(Criteria.where("position").is(Position.GOAL_KEEPER));
+    var players = mongoTemplate.find(query, Player.class);
     if (!players.isEmpty()) {
       return Maybe.just(players.get(0));
     } else {

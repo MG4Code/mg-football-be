@@ -24,23 +24,11 @@
 
   <properties>
     <maven.build.timestamp.format>yyMMddHHmmss</maven.build.timestamp.format>
+    <java.version>13</java.version>
 
-    <java.version>1.8</java.version>
     <springdoc-openapi-ui.version>1.2.30</springdoc-openapi-ui.version>
-
-    <downloadSources>true</downloadSources>
-    <downloadJavadocs>true</downloadJavadocs>
     <disruptor.version>3.4.2</disruptor.version>
   </properties>
-
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-      </plugin>
-    </plugins>
-  </build>
 
   <dependencies>
     <dependency>
@@ -134,5 +122,23 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>${java.version}</source>
+          <target>${java.version}</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 
 </project>
