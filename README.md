@@ -10,7 +10,7 @@ http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-confi
 
 ### List all players
 ```
-curl http://localhost:8080/player
+curl -X GET http://localhost:8080/player
 ```
 
 ### Add player
@@ -22,7 +22,7 @@ curl --header "Content-Type: application/json" \
             "lastName": "de Gea",
             "club": "Manchester United",
             "shirtNumber": 1,
-            "position": "FORWARD"
+            "position": "GOAL_KEEPER"
           }' \
   http://localhost:8080/player
 ```
@@ -75,4 +75,9 @@ curl -X DELETE http://localhost:8080/player/5e440e8d066e3d607b3d8dbf
 ### Get all players for a club
 ```
 curl -X GET http://localhost:8080/player/club?q="chester"
+```
+
+### Get first GOAL_KEEPER
+```
+curl -X GET http://localhost:8080/player/goalkeeper"
 ```

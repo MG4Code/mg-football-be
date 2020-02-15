@@ -1,5 +1,7 @@
 package com.mg.backend.player;
 
+import com.mg.backend.player.data.dto.Player;
+import com.mg.backend.player.data.repo.PlayerRepository;
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
 import io.reactivex.Maybe;
@@ -57,5 +59,9 @@ public class PlayerService {
 
   public Maybe<Player> findPlayerById(String id) {
     return repo.findById(id);
+  }
+
+  public Maybe<Player> getFirstGoalKeeper() {
+    return repo.getFirstGoalKeeper();
   }
 }

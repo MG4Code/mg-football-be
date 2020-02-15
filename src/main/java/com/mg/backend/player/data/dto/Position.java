@@ -1,4 +1,4 @@
-package com.mg.backend.player;
+package com.mg.backend.player.data.dto;
 
 public enum Position {
 

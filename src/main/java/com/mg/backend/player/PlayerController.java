@@ -1,10 +1,10 @@
 package com.mg.backend.player;
 
+import com.mg.backend.player.data.dto.Player;
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
 import io.reactivex.Maybe;
 import io.reactivex.Single;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
@@ -45,6 +45,11 @@ public class PlayerController {
   @DeleteMapping("/{id}")
   public Completable delete(@PathVariable("id") String id) {
     return service.delete(id);
+  }
+
+  @GetMapping("goalkeeper")
+  public Maybe<Player> getFirstGoalKeeper() {
+    return service.getFirstGoalKeeper();
   }
 
 }
