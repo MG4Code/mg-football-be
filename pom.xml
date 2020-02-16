@@ -28,6 +28,7 @@
 
     <springdoc-openapi-ui.version>1.2.30</springdoc-openapi-ui.version>
     <disruptor.version>3.4.2</disruptor.version>
+    <reactor-adapter.version>3.3.2.RELEASE</reactor-adapter.version>
   </properties>
 
   <dependencies>
@@ -56,6 +57,13 @@
     <!--      <artifactId>rxjava</artifactId>-->
     <!--      <version>3.0.0</version>-->
     <!--    </dependency>-->
+    <!-- convert from reactor to rxjava2 -->
+    <dependency>
+      <groupId>io.projectreactor.addons</groupId>
+      <artifactId>reactor-adapter</artifactId>
+      <version>${reactor-adapter.version}</version>
+    </dependency>
+
 
     <!-- Framework for developing RESTful Web Services in Java that provides support for JAX-RS APIs. -->
     <dependency>
