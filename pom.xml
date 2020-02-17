@@ -93,6 +93,14 @@
       <version>${springdoc-openapi-ui.version}</version>
     </dependency>
 
+    <!-- is an annotation processor that generates metadata about classes in your application that are annotated with @ConfigurationProperties -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-configuration-processor</artifactId>
+      <optional>true</optional>
+    </dependency>
+
+
     <!-- LOGGING -->
     <!-- using log4j underneath slf4j -->
     <dependency>

@@ -50,7 +50,7 @@ public class PlayerControllerTest {
   }
 
   @Test
-  @WithMockUser(username = "georg", roles = {"BAR"})
+  @WithMockUser(username = "georg", roles = {"READ"})
   public void listAllWillReturnOnePlayer() throws Exception {
     when(playerRepository.findAll()).thenReturn(Flowable.just(new Player().setFirstName("foobar")));
     var mvcResult = mvc.perform(get("/player"))
@@ -70,7 +70,7 @@ public class PlayerControllerTest {
   }
 
   @Test
-  @WithMockUser(username = "georg", roles = {"XZY"})
+  @WithMockUser(username = "georg", roles = {"XYZ"})
   public void authenticatedUserForbidden() throws Exception {
     mvc.perform(get("/player").contentType(MediaType.APPLICATION_JSON))
       .andExpect(status().isForbidden());
