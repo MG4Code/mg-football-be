@@ -15,6 +15,8 @@ spring:
       client:
         registration:
           google:
+            scope:
+              - email
             client-id: 321216843150-kmt7e7bvovo7r1277a76en8picgi3sef.apps.googleusercontent.com
             client-secret: <enter-secret-here>
 
@@ -26,3 +28,11 @@ management:
   endpoint:
     health:
       show-details: ALWAYS
+
+application:
+  security-mapping:
+    [aigner.georg.79@gmail.com]:
+        - READ
+        - WRITE
+    [mg4code@gmail.com]:
+        - READ

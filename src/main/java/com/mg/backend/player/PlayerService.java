@@ -1,6 +1,6 @@
 package com.mg.backend.player;
 
-import com.mg.backend.SecurityConfig;
+import com.mg.backend.ApplicationConfiguration;
 import com.mg.backend.player.data.dto.Player;
 import com.mg.backend.player.data.repo.PlayerRepository;
 import io.reactivex.Completable;
@@ -17,7 +17,7 @@ import javax.ws.rs.WebApplicationException;
 @Service
 public class PlayerService {
 
-  private Logger logger = LoggerFactory.getLogger(SecurityConfig.class);
+  private Logger logger = LoggerFactory.getLogger(ApplicationConfiguration.class);
   private final PlayerRepository repo;
 
   @Autowired
