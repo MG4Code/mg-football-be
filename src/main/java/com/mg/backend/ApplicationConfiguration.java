@@ -18,12 +18,11 @@ public class ApplicationConfiguration extends WebSecurityConfigurerAdapter {
 
   private Logger logger = LoggerFactory.getLogger(ApplicationConfiguration.class);
 
-
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     http
       .authorizeRequests()
-      .anyRequest().authenticated()
+      .anyRequest().hasRole("READ")
       .and()
       .formLogin(withDefaults());
   }
@@ -31,14 +30,14 @@ public class ApplicationConfiguration extends WebSecurityConfigurerAdapter {
   @Bean
   public UserDetailsService users() {
     UserDetails user = User.builder()
-      .username("user")
+      .username("aigner.georg.79@gmail.com")
       .password("{bcrypt}$2y$12$tCtowHkQDXgwPXsnd0C2kOg/Z3mnpCXEVoOjC54MPbQktHRTsAvNm") // test1234
-      .roles("USER")
+      .roles("READ", "WRITE")
       .build();
     UserDetails admin = User.builder()
-      .username("admin")
+      .username("mg4code@gmail.com")
       .password("{bcrypt}$2y$12$tCtowHkQDXgwPXsnd0C2kOg/Z3mnpCXEVoOjC54MPbQktHRTsAvNm") // test1234
-      .roles("USER", "ADMIN")
+      .roles("NIX")
       .build();
     return new InMemoryUserDetailsManager(user, admin);
   }
