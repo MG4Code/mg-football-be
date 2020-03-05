@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
@@ -52,11 +52,6 @@
       <groupId>io.reactivex.rxjava2</groupId>
       <artifactId>rxjava</artifactId>
     </dependency>
-    <!--    <dependency>-->
-    <!--      <groupId>io.reactivex.rxjava3</groupId>-->
-    <!--      <artifactId>rxjava</artifactId>-->
-    <!--      <version>3.0.0</version>-->
-    <!--    </dependency>-->
     <!-- convert from reactor to rxjava2 -->
     <dependency>
       <groupId>io.projectreactor.addons</groupId>
@@ -114,37 +109,7 @@
       <version>${disruptor.version}</version>
     </dependency>
 
-    <!-- SECURITY -->
-
-    <!-- Template engine Thymeleaf is a Java-based library used to create a web application -->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-thymeleaf</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-security</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.security</groupId>
-      <artifactId>spring-security-oauth2-client</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.security</groupId>
-      <artifactId>spring-security-oauth2-jose</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.security.oauth.boot</groupId>
-      <artifactId>spring-security-oauth2-autoconfigure</artifactId>
-      <version>2.2.4.RELEASE</version>
-    </dependency>
-
     <!-- TEST -->
-    <dependency>
-      <groupId>org.springframework.security</groupId>
-      <artifactId>spring-security-test</artifactId>
-      <scope>test</scope>
-    </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>

@@ -9,12 +9,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.MediaType;
-import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -23,11 +19,7 @@ import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.asyncDispatch;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -45,17 +37,14 @@ public class PlayerControllerTest {
   public void setup() {
     mvc = MockMvcBuilders
       .webAppContextSetup(context)
-      .apply(SecurityMockMvcConfigurers.springSecurity())
       .build();
   }
 
   @Test
-  @WithMockUser(username = "georg", roles = {"READ"})
   public void listAllWillReturnOnePlayer() throws Exception {
     when(playerRepository.findAll()).thenReturn(Flowable.just(new Player().setFirstName("foobar")));
     var mvcResult = mvc.perform(get("/player"))
       .andExpect(request().asyncStarted())
-//      .andDo(MockMvcResultHandlers.log())
       .andReturn();
 
     mvc.perform(asyncDispatch(mvcResult))
@@ -67,12 +56,5 @@ public class PlayerControllerTest {
 
     ;
 
-  }
-
-  @Test
-  @WithMockUser(username = "georg", roles = {"XYZ"})
-  public void authenticatedUserForbidden() throws Exception {
-    mvc.perform(get("/player").contentType(MediaType.APPLICATION_JSON))
-      .andExpect(status().isForbidden());
   }
 }
