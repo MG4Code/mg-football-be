@@ -18,7 +18,7 @@ spring:
             scope:
               - email
             client-id: 321216843150-kmt7e7bvovo7r1277a76en8picgi3sef.apps.googleusercontent.com
-            client-secret: <enter-secret-here>
+            client-secret: BrF2zC4ifxiwUJ1EgMg_Kaf9
 
 management:
   endpoints:

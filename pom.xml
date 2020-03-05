@@ -29,7 +29,9 @@
     <springdoc-openapi-ui.version>1.2.30</springdoc-openapi-ui.version>
     <disruptor.version>3.4.2</disruptor.version>
     <reactor-adapter.version>3.3.2.RELEASE</reactor-adapter.version>
+    <jjwt.version>0.9.1</jjwt.version>
   </properties>
+
 
   <dependencies>
     <dependency>
@@ -115,12 +117,6 @@
     </dependency>
 
     <!-- SECURITY -->
-
-    <!-- Template engine Thymeleaf is a Java-based library used to create a web application -->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-thymeleaf</artifactId>
-    </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-security</artifactId>
@@ -134,9 +130,26 @@
       <artifactId>spring-security-oauth2-jose</artifactId>
     </dependency>
     <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-jwt</artifactId>
+      <version>1.1.0.RELEASE</version>
+    </dependency>
+    <dependency>
+      <groupId>io.jsonwebtoken</groupId>
+      <artifactId>jjwt</artifactId>
+      <version>${jjwt.version}</version>
+    </dependency>
+
+    <dependency>
       <groupId>org.springframework.security.oauth.boot</groupId>
       <artifactId>spring-security-oauth2-autoconfigure</artifactId>
       <version>2.2.4.RELEASE</version>
+    </dependency>
+
+    <!-- Template engine Thymeleaf is a Java-based library used to create a web application -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-thymeleaf</artifactId>
     </dependency>
 
     <!-- TEST -->
