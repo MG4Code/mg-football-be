@@ -19,8 +19,3 @@ management:
   endpoint:
     health:
       show-details: ALWAYS
-
-jwt:
-  secret: javainuse
-
-

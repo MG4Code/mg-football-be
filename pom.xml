@@ -59,7 +59,6 @@
       <version>${reactor-adapter.version}</version>
     </dependency>
 
-
     <!-- Framework for developing RESTful Web Services in Java that provides support for JAX-RS APIs. -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -96,6 +95,16 @@
     </dependency>
 
 
+    <!-- SECURITY -->
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-config</artifactId>
+    </dependency>
+
     <!-- LOGGING -->
     <!-- using log4j underneath slf4j -->
     <dependency>
@@ -122,7 +131,6 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-
 
   <build>
     <finalName>${project.version}-${maven.build.timestamp}</finalName>
