@@ -20,7 +20,8 @@ management:
     health:
       show-details: ALWAYS
 
-jwt:
-  secret: javainuse
 
+football:
+  jwtSecret: footballSecretKey
+  jwtExpirationMs: 8640000
 
